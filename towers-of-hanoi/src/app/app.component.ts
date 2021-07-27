@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import CanvasManager from './fabric/CanvasManager';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'towers-of-hanoi';
+
+  canvasManager!: CanvasManager;
+
+  ngAfterViewInit(): void {
+    const canvasElement = document.querySelector('#canvas');
+
+    this.canvasManager = new CanvasManager(canvasElement as HTMLCanvasElement);
+  }
 }
